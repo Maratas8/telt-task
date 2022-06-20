@@ -1,0 +1,41 @@
+
+
+.header {
+  background-color: rgb(128, 190, 252);
+  height: 30px;
+  padding: 2rem;
+  width: 100%;
+}
+
+.nav-main {
+  display: flex;
+  position: absolute;
+  top: 100px;
+  bottom: 0;
+  width: 100%
+}
+
+.nav {
+  flex-grow: 1;
+  background-color: rgb(229, 153, 230);
+  padding: 2rem;
+}
+
+.main {
+  flex-grow: 5;
+  background-color: rgb(153, 230, 153);
+  padding: 2rem;
+}
+
+.footer {
+  background-color: rgb(35, 93, 151);
+  padding: 2rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+}
