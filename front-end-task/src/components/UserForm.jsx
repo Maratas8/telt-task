@@ -1,18 +1,48 @@
 import React, { useContext } from "react";
-import { CategoryContext } from "../App";
+import { useState } from "react";
+import { CategoryContext, UserContext } from "../App";
+import Button from "./Button";
 
 function UserForm() {
   const { categoryList } = useContext(CategoryContext);
+  const { users, setUsers } = useContext(UserContext);
+
+  const [firstName, setFirstName] = useState("");
+
+  console.log(users);
+
+  const handleUserSubmit = (event) => {
+    event.preventDefault();
+
+    const user = {
+      firstName: event.target.fname.value.trim(),
+      lastname: event.target.lname.value.trim(),
+      email: event.target.email.value.trim(),
+      age: event.target.age.value,
+      gender: event.target.gender.value,
+      category: event.target.category.value,
+      password: event.target.password.value,
+    };
+
+    console.log(user);
+
+    setUsers([...users, user]);
+    console.log(users);
+  };
+
+
 
   return (
     <div className="user-form">
-      <form>
+      <form onSubmit={handleUserSubmit}>
         <input
           type="text"
           id="fname"
           name="fname"
           placeholder="First Name"
           required
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
         />
         <br />
         <input
@@ -73,6 +103,7 @@ function UserForm() {
           minLength="6"
           required
         />
+        <Button text="Add User" type="submit" />
       </form>
     </div>
   );
