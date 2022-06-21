@@ -2,17 +2,34 @@ import React, { useContext } from "react";
 import { CategoryContext } from "../App";
 
 function UserForm() {
-  const { setCategoryList } = useContext(CategoryContext);
   const { categoryList } = useContext(CategoryContext);
 
   return (
     <div className="user-form">
       <form>
-        <input type="text" id="fname" name="fname" placeholder="First Name" />
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          placeholder="First Name"
+          required
+        />
         <br />
-        <input type="text" id="lname" name="lname" placeholder="Last Name" />
+        <input
+          type="text"
+          id="lname"
+          name="lname"
+          placeholder="Last Name"
+          required
+        />
         <br />
-        <input type="email" id="email" name="Email" placeholder="email" />
+        <input
+          type="email"
+          id="email"
+          name="Email"
+          placeholder="email"
+          required
+        />
         <br />
         <input
           type="number"
@@ -21,9 +38,10 @@ function UserForm() {
           placeholder="Age"
           min="1"
           max="120"
+          required
         />
         <br />
-        <fieldset>
+        <fieldset required>
           <legend>Gender:</legend>
           <input type="radio" id="female" name="gender" value="female" />
           <label htmlFor="female">Female</label>
@@ -40,8 +58,8 @@ function UserForm() {
         <br />
         <select name="category" id="category">
           {categoryList.map((category, index) => (
-            <option key={index} value={category.toLowerCase()}>
-              {category}
+            <option key={index} value={category.categoryName.toLowerCase()}>
+              {category.categoryName}
             </option>
           ))}
         </select>
@@ -52,6 +70,8 @@ function UserForm() {
           id="password"
           name="password"
           placeholder="Password"
+          minLength="6"
+          required
         />
       </form>
     </div>
