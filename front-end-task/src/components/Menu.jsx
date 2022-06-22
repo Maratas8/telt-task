@@ -15,11 +15,21 @@ function Menu() {
           <Link key={index} to={`/${category.categoryName}`}>
             {category.categoryName}
           </Link>
-          {category.subCategories.map((subCategory, indexm) => (
+
+            
+          {category.subCategories.map((subCategory, index) => (
             <div className="subcategory-menu">
-            <Link key={indexm} to={`/${subCategory.subCategoryName}`}>
-              {subCategory.subCategoryName}
-            </Link>
+              <Link key={index} to={`/${subCategory.subCategoryName}`}>
+                {subCategory.subCategoryName}
+              </Link>
+
+              {subCategory.subSubCategories.map((subSubCategory, index) => (
+                <div className="subsubcategory-menu">
+                  <Link key={index} to={`/${subSubCategory}`}>
+                    {subSubCategory}
+                  </Link>
+                </div>
+              ))}
             </div>
           ))}
         </div>

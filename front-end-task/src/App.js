@@ -30,6 +30,35 @@ function App() {
                   }
                 />
               ))}
+              {categoryList.map((category) =>
+                category.subCategories.map((subCategory, index) => (
+                  <Route
+                    key={index}
+                    path={`/${subCategory.subCategoryName}`}
+                    element={
+                      <UsersByCategory
+                        categoryName={subCategory.subCategoryName}
+                      />
+                    }
+                  />
+                ))
+              )}
+
+              {categoryList.map((category) =>
+                category.subCategories.map((subCategory) => (
+                  subCategory.subSubCategories.map((subSubCategory, index) => (
+                    <Route
+                    key={index}
+                    path={`/${subSubCategory}`}
+                    element={
+                      <UsersByCategory
+                        categoryName={subSubCategory}
+                      />
+                    }
+                  />
+                  ))
+                ))
+              )}
 
               <Route path="/*" element={<NewUser />} />
             </Routes>
